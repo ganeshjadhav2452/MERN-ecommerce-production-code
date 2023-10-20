@@ -8,6 +8,7 @@ import cors from 'cors'
 import categoryRoutes from './routes/categoryRoutes.js'
 import ProductRoutes from './routes/productRoutes.js'
 import path from 'path'
+import {   fileUrlToPath } from 'url';
 // configuring env file
 dotenv.config()
 
@@ -27,6 +28,9 @@ app.use('/api/v1/category', categoryRoutes)
 app.use('/api/v1/product', ProductRoutes)
 app.use(express.static(path.join(__dirname, "./client/build")))
 
+// es6 fixed
+const __filename = fileUrlToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 // inital call
 app.use('*', function (req, res) {
     res.sendFile(path.join(__dirname, "./client/build/index.html"))
