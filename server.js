@@ -23,8 +23,8 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 // es6 fixed
-const __dirname = path.dirname(__filename)
 const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 //rest api
 app.use('/api/v1/auth', authRoutes)
